@@ -13,7 +13,7 @@ end
 
 execute "get & unpack #{ node[:ruby][:version] }" do
   user "root"
-  command "cd /usr/src && wget ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-#{ node[:ruby][:version] }.tar.bz2 && tar xjf ruby-#{ node[:ruby][:version] }.tar.bz2 && cd ruby-#{ node[:ruby][:version] }"
+  command "cd /usr/src && wget ftp://ftp.ruby-lang.org/pub/ruby/ruby-#{ node[:ruby][:version] }.tar.bz2 && tar xjf ruby-#{ node[:ruby][:version] }.tar.bz2 && cd ruby-#{ node[:ruby][:version] }"
   not_if ruby_installed_check
 end
 
