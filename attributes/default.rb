@@ -1,1 +1,1 @@
-default[:ruby][:version] = "1.9-stable"
+default[:ruby][:version] = "1.9.3-p429"
