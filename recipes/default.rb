@@ -5,7 +5,7 @@ ruby_installed_check = "ruby -v | grep #{ node[:ruby][:version].gsub( '-', '' ) 
 
 # lucid-server, oneiric-server and precise-server don't have libreadline5-dev,
 # use libreadline5. ruby 1.9.3-p194 (at least) needs libyaml-syck-perl (HJH)
-%w( wget zlib1g-dev libssl-dev libffi-dev libxml2-dev libncurses5-dev libreadline5 libyaml-syck-perl ).each do |pkg|
+%w( wget zlib1g-dev libssl-dev libffi-dev libxml2-dev libncurses5-dev libreadline5 libyaml-syck-perl libyaml).each do |pkg|
   package pkg do
     action :install
   end
@@ -31,7 +31,7 @@ end
   end
 end
 
-%w( ohai chef ).each do |g|
+%w( ohai chef psych ).each do |g|
   gem_package g do
     action :install
     gem_binary('/usr/local/bin/gem')
