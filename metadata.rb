@@ -10,4 +10,4 @@ supports          "ubuntu"
   depends cb
 end
 
-recipe "chef-ruby1.9", "Installs Ruby 1.9.x (default: 1.9.2) from source."
+recipe "chef-ruby1.9", "Installs Ruby 1.9.x (default: 1.9.3) from source."

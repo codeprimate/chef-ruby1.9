@@ -19,14 +19,14 @@ end
 
 execute "configure & make #{ node[:ruby][:version] }" do
   user "root"
-  command "cd /usr/src/ruby-#{ node[:ruby][:version] } && ./configure && make && make install"
+  command "cd /usr/src/ruby-#{ node[:ruby][:version] } && ./configure --prefix=/opt && make && make install"
   not_if ruby_installed_check
 end
 
 %w( openssl readline ).each do |ext|
   execute "configure & make #{ node[:ruby][:version] } #{ext} support" do
     user "root"
-    command "cd /usr/src/ruby-#{ node[:ruby][:version] }/ext/#{ext}/ && ruby extconf.rb && make && make install"
+    command "cd /usr/src/ruby-#{ node[:ruby][:version] }/ext/#{ext}/ && /opt/bin/ruby extconf.rb && make && make install"
     not_if ruby_installed_check
   end
 end
@@ -34,6 +34,6 @@ end
 %w( ohai chef psych ).each do |g|
   gem_package g do
     action :install
-    gem_binary('/usr/local/bin/gem')
+    gem_binary('/opt/bin/gem')
   end
 end
