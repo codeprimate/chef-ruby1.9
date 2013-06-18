@@ -33,9 +33,9 @@ end
 
 ## This is causing binaries to be installed in /usr/local/bin, which breaks
 # Chef ruby
-%w( ohai chef psych ).each do |g|
-  gem_package g do
-    action :install
-    gem_binary('/opt/bin/gem')
-  end
-end
+#%w( ohai chef psych ).each do |g|
+  #gem_package g do
+    #action :install
+    #gem_binary('/opt/bin/gem')
+  #end
+#end
