@@ -1,7 +1,7 @@
 include_recipe "apt"
 include_recipe "build-essential"
 
-ruby_installed_check = "ruby -v | grep #{ node[:ruby][:version].gsub( '-', '' ) }"
+ruby_installed_check = "/opt/bin/ruby -v | grep #{ node[:ruby][:version].gsub( '-', '' ) }"
 
 # lucid-server, oneiric-server and precise-server don't have libreadline5-dev,
 # use libreadline5. ruby 1.9.3-p194 (at least) needs libyaml-syck-perl (HJH)
@@ -31,6 +31,8 @@ end
   end
 end
 
+## This is causing binaries to be installed in /usr/local/bin, which breaks
+# Chef ruby
 #%w( ohai chef psych ).each do |g|
   #gem_package g do
     #action :install
